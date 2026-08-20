@@ -1,0 +1,12 @@
+CREATE TABLE DiseaseEntry (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    patientSubjectId TEXT NOT NULL,
+    name TEXT NOT NULL
+);
+
+selectForPatient:
+SELECT * FROM DiseaseEntry WHERE patientSubjectId = ?;
+
+insert:
+INSERT INTO DiseaseEntry(patientSubjectId, name)
+VALUES (?, ?);

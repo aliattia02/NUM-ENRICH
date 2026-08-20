@@ -15,7 +15,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -23,9 +22,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun DiseasesScreen(onBack: () -> Unit) {
+fun DiseasesScreen(
+    diseases: List<Disease>,
+    onAddDisease: (String) -> Unit,
+    onBack: () -> Unit
+) {
     var name by remember { mutableStateOf("") }
-    val diseases = remember { mutableStateListOf<Disease>() }
 
     Column(
         modifier = Modifier
@@ -52,7 +54,7 @@ fun DiseasesScreen(onBack: () -> Unit) {
 
         Button(onClick = {
             if (name.isNotBlank()) {
-                diseases.add(Disease(name))
+                onAddDisease(name)
                 name = ""
             }
         }) {

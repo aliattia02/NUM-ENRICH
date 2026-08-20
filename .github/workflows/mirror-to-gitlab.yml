@@ -1,0 +1,22 @@
+name: Mirror to GitLab
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push to GitLab mirror branch
+        env:
+          GITLAB_MIRROR_TOKEN: ${{ secrets.GITLAB_MIRROR_TOKEN }}
+        run: |
+          git remote add gitlab-mirror "https://oauth2:${GITLAB_MIRROR_TOKEN}@imigitlab.uni-muenster.de/MeDIC/num-enrich.git"
+          git push gitlab-mirror HEAD:refs/heads/github-mirror --force

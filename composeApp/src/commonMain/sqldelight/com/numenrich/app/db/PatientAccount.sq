@@ -1,0 +1,18 @@
+CREATE TABLE PatientAccount (
+    subjectId TEXT NOT NULL PRIMARY KEY,
+    localPatientRef TEXT NOT NULL,
+    givenName TEXT NOT NULL,
+    familyName TEXT NOT NULL,
+    birthDate TEXT NOT NULL,
+    gender TEXT NOT NULL,
+    userType TEXT NOT NULL,
+    email TEXT NOT NULL,
+    password TEXT NOT NULL
+);
+
+selectAll:
+SELECT * FROM PatientAccount;
+
+insert:
+INSERT INTO PatientAccount(subjectId, localPatientRef, givenName, familyName, birthDate, gender, userType, email, password)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);

@@ -1,14 +1,17 @@
 package com.numenrich.app.auth
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -16,6 +19,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
@@ -29,6 +33,7 @@ fun RegisterScreen(
     var givenName by remember { mutableStateOf("") }
     var familyName by remember { mutableStateOf("") }
     var birthDate by remember { mutableStateOf("") }
+    var gender by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
@@ -71,6 +76,26 @@ fun RegisterScreen(
 
         Spacer(modifier = Modifier.height(8.dp))
 
+        Text("Sex")
+
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            RadioButton(
+                selected = gender == "Male",
+                onClick = { gender = "Male" }
+            )
+            Text("Male")
+
+            Spacer(modifier = Modifier.width(16.dp))
+
+            RadioButton(
+                selected = gender == "Female",
+                onClick = { gender = "Female" }
+            )
+            Text("Female")
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
@@ -108,7 +133,7 @@ fun RegisterScreen(
         Button(onClick = {
             when {
                 givenName.isBlank() || familyName.isBlank() || birthDate.isBlank() ||
-                    email.isBlank() || password.isBlank() -> {
+                    gender.isBlank() || email.isBlank() || password.isBlank() -> {
                     error = "Please fill in all fields."
                 }
                 password != confirmPassword -> {
@@ -124,6 +149,7 @@ fun RegisterScreen(
                             givenName = givenName,
                             familyName = familyName,
                             birthDate = birthDate,
+                            gender = gender,
                             email = email,
                             password = password
                         )

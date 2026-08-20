@@ -6,6 +6,7 @@ data class Patient(
     val givenName: String,
     val familyName: String,
     val birthDate: String,
+    val gender: String,
     val userType: String = "patient",
     val email: String,
     val password: String
