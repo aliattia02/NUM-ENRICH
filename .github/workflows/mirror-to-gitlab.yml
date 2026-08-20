@@ -1,9 +1,10 @@
 name: Mirror to GitLab
 
+# Suspended: no longer runs on every push, only when triggered by hand
+# from the Actions tab. Re-add the "push" trigger below to turn auto-mirroring
+# back on (needs the GITLAB_MIRROR_TOKEN secret set again first).
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   mirror:
