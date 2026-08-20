@@ -6,6 +6,7 @@ build/
 local.properties
 .idea/
 .kotlin/
+.history/
 
 # backend (Python)
 backend/.venv/

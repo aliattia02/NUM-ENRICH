@@ -1,22 +1,15 @@
 # NUM-ENRICH
 
-Small Android app for jotting down simple readings (a label and a value).
-Built with Kotlin Multiplatform + Jetpack Compose, Android only for now —
-the project is laid out so iOS can be added as another source set later.
-
-This is a learning project, so it's intentionally minimal.
 
 ## Structure
 
-- `composeApp/` – the Android app
+- `composeApp/` 
   - `src/commonMain` – shared UI code
-  - `src/androidMain` – Android-specific code (just the Activity for now)
-- `backend/` – small FastAPI backend, currently just a health check endpoint
+  - `src/androidMain` – Android-specific code 
+- `backend/` –  FastAPI backend, currently just a health check endpoint
 
 ## Running the app
 
-Open the project folder in Android Studio and run the `composeApp`
-configuration, or from a terminal:
 
 ```
 ./gradlew :composeApp:installDebug
