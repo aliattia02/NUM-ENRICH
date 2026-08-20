@@ -1,0 +1,14 @@
+*.iml
+.gradle/
+build/
+/captures/
+.DS_Store
+local.properties
+.idea/
+.kotlin/
+
+# backend (Python)
+backend/.venv/
+backend/__pycache__/
+*.pyc
+backend/.env
